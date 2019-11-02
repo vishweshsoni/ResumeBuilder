@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resume_app/screens/homepage.dart';
 
 void main() => runApp(MyApp());
 
@@ -7,14 +8,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title:'Resume Builder',
       theme: ThemeData(
-                primarySwatch: Colors.blue,
+                primarySwatch: Colors.lightBlue,
       ),
-      home: MyApp(
-
-
-      ),
+      routes: {
+          '/HomePage': (context)=>HomePage(),
+      },
+      home: HomePage(),
     );
   }
 }
