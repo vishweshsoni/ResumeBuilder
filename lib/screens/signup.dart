@@ -126,23 +126,7 @@ class LoginState extends State<LoginPage>{
         color: Color.fromRGBO(0, 119, 119,1.0),
         child: Text("Sign me up",style:TextStyle(color: Colors.white70),),
         onPressed: (){
-//          Navigator.of(context).push(PageRouteBuilder(
-//              opaque: false,
-//              barrierDismissible: true,
-//              barrierColor: Colors.white12,
-//              pageBuilder: (context,_,__){
-//                return Center(
-//                  child: Container(
-//                    height: 200.0,
-//                    width: 200.0,
-//                    decoration: BoxDecoration(
-//                      color: Colors.white,
-//                      borderRadius: BorderRadius.circular(5.0)
-//                    ),
-//                  )
-//                );
-//              }
-//          ));
+          Navigator.of(context).pushNamed('/HomePage');
           FocusScope.of(context).requestFocus(new FocusNode());
           if(_formKey.currentState.validate()){
             setState(() {
