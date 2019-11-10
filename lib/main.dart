@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:resume_app/screens/homepage.dart';
 import 'package:resume_app/screens/login.dart';
+import 'package:resume_app/screens/signup.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
           '/HomePage': (context)=>HomePage(),
+          '/SignupPage':(context)=>SignUp(),
       },
       home: Login(),
     );

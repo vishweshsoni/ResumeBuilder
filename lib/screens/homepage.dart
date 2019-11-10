@@ -17,6 +17,7 @@ class _HomePageState extends State<HomePage> {
         children: <Widget>[
 
           Container(
+
             child: Column(
               children: <Widget>[
                 SizedBox(
@@ -41,7 +42,11 @@ class _HomePageState extends State<HomePage> {
                       Container(
                         child: CircleAvatar(
                           maxRadius: 20.0,
-                          backgroundColor: Colors.amber,
+                          backgroundImage: AssetImage(
+                              'Assets/images/user.jpg',
+
+
+                          ),
                         ),
                       ),
                     ],
@@ -65,21 +70,20 @@ class _HomePageState extends State<HomePage> {
                                 decoration: BoxDecoration(
                                     shape: BoxShape.rectangle,
                                     borderRadius: BorderRadius.circular(25.0),
-                                    color: Theme.of(context).primaryColor,
-                                    boxShadow: [
-                                      BoxShadow(color: Colors.black12),
-                                    ]),
-                                child: IconButton(
-                                  splashColor: Colors.lightBlueAccent,
-                                  icon: Icon(
-                                    Icons.person,
-                                    size: 35.0,
-                                    color: Colors.white,
-                                  ),
-                                  onPressed: () {},
-                                ),
+                                    image: DecorationImage(
+                                      image: AssetImage(
+                                          'Assets/images/profile.png'),
+                                      fit: BoxFit.cover,
+                                    ),
+                                    ),
+
                               ),
-                              Text("hi")
+                              Text("Personal Detail",style: TextStyle(
+                                  color: Theme.of(context).primaryColor,
+                                  fontFamily: 'Oswald',
+                                  fontSize: 19.0,
+                                  fontWeight: FontWeight.w500,
+                                  fontStyle: FontStyle.normal),)
                             ],
                           ),
                         ],
@@ -92,23 +96,22 @@ class _HomePageState extends State<HomePage> {
                                 width: MediaQuery.of(context).size.width / 4,
                                 height: MediaQuery.of(context).size.height / 8,
                                 decoration: BoxDecoration(
-                                    shape: BoxShape.rectangle,
-                                    borderRadius: BorderRadius.circular(25.0),
-                                    color: Theme.of(context).primaryColor,
-                                    boxShadow: [
-                                      BoxShadow(color: Colors.black12),
-                                    ]),
-                                child: IconButton(
-                                  splashColor: Colors.lightBlueAccent,
-                                  icon: Icon(
-                                    Icons.person,
-                                    size: 35.0,
-                                    color: Colors.white,
+                                  shape: BoxShape.rectangle,
+                                  borderRadius: BorderRadius.circular(25.0),
+                                  image: DecorationImage(
+                                    image: new AssetImage(
+                                        'Assets/images/education.png'),
+                                    fit: BoxFit.cover,
                                   ),
-                                  onPressed: () {},
                                 ),
+
                               ),
-                              Text("hi")
+                              Text("Education",style: TextStyle(
+                                  color: Theme.of(context).primaryColor,
+                                  fontFamily: 'Oswald',
+                                  fontSize: 19.0,
+                                  fontWeight: FontWeight.w500,
+                                  fontStyle: FontStyle.normal),)
                             ],
                           ),
                         ],
@@ -121,121 +124,22 @@ class _HomePageState extends State<HomePage> {
                                 width: MediaQuery.of(context).size.width / 4,
                                 height: MediaQuery.of(context).size.height / 8,
                                 decoration: BoxDecoration(
-                                    shape: BoxShape.rectangle,
-                                    borderRadius: BorderRadius.circular(25.0),
-                                    color: Theme.of(context).primaryColor,
-                                    boxShadow: [
-                                      BoxShadow(color: Colors.black12),
-                                    ]),
-                                child: IconButton(
-                                  splashColor: Colors.lightBlueAccent,
-                                  icon: Icon(
-                                    Icons.person,
-                                    size: 35.0,
-                                    color: Colors.white,
+                                  shape: BoxShape.rectangle,
+                                  borderRadius: BorderRadius.circular(25.0),
+                                  image: DecorationImage(
+                                    image: new AssetImage(
+                                        'Assets/images/skills.png'),
+                                    fit: BoxFit.cover,
                                   ),
-                                  onPressed: () {},
                                 ),
+
                               ),
-                              Text("hi")
-                            ],
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: MediaQuery.of(context).size.height / 25,
-                ),
-                Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: <Widget>[
-                      Column(
-                        children: <Widget>[
-                          Column(
-                            children: <Widget>[
-                              Container(
-                                width: MediaQuery.of(context).size.width / 4,
-                                height: MediaQuery.of(context).size.height / 8,
-                                decoration: BoxDecoration(
-                                    shape: BoxShape.rectangle,
-                                    borderRadius: BorderRadius.circular(25.0),
-                                    color: Theme.of(context).primaryColor,
-                                    boxShadow: [
-                                      BoxShadow(color: Colors.black12),
-                                    ]),
-                                child: IconButton(
-                                  splashColor: Colors.lightBlueAccent,
-                                  icon: Icon(
-                                    Icons.person,
-                                    size: 35.0,
-                                    color: Colors.white,
-                                  ),
-                                  onPressed: () {},
-                                ),
-                              ),
-                              Text("hi")
-                            ],
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: <Widget>[
-                          Column(
-                            children: <Widget>[
-                              Container(
-                                width: MediaQuery.of(context).size.width / 4,
-                                height: MediaQuery.of(context).size.height / 8,
-                                decoration: BoxDecoration(
-                                    shape: BoxShape.rectangle,
-                                    borderRadius: BorderRadius.circular(25.0),
-                                    color: Theme.of(context).primaryColor,
-                                    boxShadow: [
-                                      BoxShadow(color: Colors.black12),
-                                    ]),
-                                child: IconButton(
-                                  splashColor: Colors.lightBlueAccent,
-                                  icon: Icon(
-                                    Icons.person,
-                                    size: 35.0,
-                                    color: Colors.white,
-                                  ),
-                                  onPressed: () {},
-                                ),
-                              ),
-                              Text("hi")
-                            ],
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: <Widget>[
-                          Column(
-                            children: <Widget>[
-                              Container(
-                                width: MediaQuery.of(context).size.width / 4,
-                                height: MediaQuery.of(context).size.height / 8,
-                                decoration: BoxDecoration(
-                                    shape: BoxShape.rectangle,
-                                    borderRadius: BorderRadius.circular(25.0),
-                                    color: Theme.of(context).primaryColor,
-                                    boxShadow: [
-                                      BoxShadow(color: Colors.black12),
-                                    ]),
-                                child: IconButton(
-                                  splashColor: Colors.lightBlueAccent,
-                                  icon: Icon(
-                                    Icons.person,
-                                    size: 35.0,
-                                    color: Colors.white,
-                                  ),
-                                  onPressed: () {},
-                                ),
-                              ),
-                              Text("hi")
+                              Text("Skills",style: TextStyle(
+                                  color: Theme.of(context).primaryColor,
+                                  fontFamily: 'Oswald',
+                                  fontSize: 19.0,
+                                  fontWeight: FontWeight.w500,
+                                  fontStyle: FontStyle.normal),)
                             ],
                           ),
                         ],
@@ -259,23 +163,22 @@ class _HomePageState extends State<HomePage> {
                                 width: MediaQuery.of(context).size.width / 4,
                                 height: MediaQuery.of(context).size.height / 8,
                                 decoration: BoxDecoration(
-                                    shape: BoxShape.rectangle,
-                                    borderRadius: BorderRadius.circular(25.0),
-                                    color: Theme.of(context).primaryColor,
-                                    boxShadow: [
-                                      BoxShadow(color: Colors.black12),
-                                    ]),
-                                child: IconButton(
-                                  splashColor: Colors.lightBlueAccent,
-                                  icon: Icon(
-                                    Icons.person,
-                                    size: 35.0,
-                                    color: Colors.white,
+                                  shape: BoxShape.rectangle,
+                                  borderRadius: BorderRadius.circular(25.0),
+                                  image: DecorationImage(
+                                    image: new AssetImage(
+                                        'Assets/images/experience.png'),
+                                    fit: BoxFit.cover,
                                   ),
-                                  onPressed: () {},
                                 ),
+
                               ),
-                              Text("hi")
+                              Text("Experience",style: TextStyle(
+                                  color: Theme.of(context).primaryColor,
+                                  fontFamily: 'Oswald',
+                                  fontSize: 19.0,
+                                  fontWeight: FontWeight.w500,
+                                  fontStyle: FontStyle.normal),)
                             ],
                           ),
                         ],
@@ -288,23 +191,119 @@ class _HomePageState extends State<HomePage> {
                                 width: MediaQuery.of(context).size.width / 4,
                                 height: MediaQuery.of(context).size.height / 8,
                                 decoration: BoxDecoration(
-                                    shape: BoxShape.rectangle,
-                                    borderRadius: BorderRadius.circular(25.0),
-                                    color: Theme.of(context).primaryColor,
-                                    boxShadow: [
-                                      BoxShadow(color: Colors.black12),
-                                    ]),
-                                child: IconButton(
-                                  splashColor: Colors.lightBlueAccent,
-                                  icon: Icon(
-                                    Icons.person,
-                                    size: 35.0,
-                                    color: Colors.white,
+                                  shape: BoxShape.rectangle,
+                                  borderRadius: BorderRadius.circular(25.0),
+                                  image: DecorationImage(
+                                    image: new AssetImage(
+                                        'Assets/images/projects.png'),
+                                    fit: BoxFit.cover,
                                   ),
-                                  onPressed: () {},
                                 ),
+
                               ),
-                              Text("hi")
+                              Text("Projects",style: TextStyle(
+                                  color: Theme.of(context).primaryColor,
+                                  fontFamily: 'Oswald',
+                                  fontSize: 19.0,
+                                  fontWeight: FontWeight.w500,
+                                  fontStyle: FontStyle.normal),)
+                            ],
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: <Widget>[
+                          Column(
+                            children: <Widget>[
+                              Container(
+                                width: MediaQuery.of(context).size.width / 4,
+                                height: MediaQuery.of(context).size.height / 8,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.rectangle,
+                                  borderRadius: BorderRadius.circular(25.0),
+                                  image: DecorationImage(
+                                    image: new AssetImage(
+                                        'Assets/images/responsibility.png'),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+
+                              ),
+                              Text("Responsibility",style: TextStyle(
+                                  color: Theme.of(context).primaryColor,
+                                  fontFamily: 'Oswald',
+                                  fontSize: 19.0,
+                                  fontWeight: FontWeight.w500,
+                                  fontStyle: FontStyle.normal),),
+
+
+                            ],
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height / 25,
+                ),
+                Container(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: <Widget>[
+                      Column(
+                        children: <Widget>[
+                          Column(
+                            children: <Widget>[
+                              Container(
+                                width: MediaQuery.of(context).size.width / 4,
+                                height: MediaQuery.of(context).size.height / 8,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.rectangle,
+                                  borderRadius: BorderRadius.circular(25.0),
+                                  image: DecorationImage(
+                                    image: new AssetImage(
+                                        'Assets/images/awards.png'),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+
+                              ),
+                              Text("Award & Achivements",style: TextStyle(
+                                  color: Theme.of(context).primaryColor,
+                                  fontFamily: 'Oswald',
+                                  fontSize: 19.0,
+                                  fontWeight: FontWeight.w500,
+                                  fontStyle: FontStyle.normal),)
+                            ],
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: <Widget>[
+                          Column(
+                            children: <Widget>[
+                              Container(
+                                width: MediaQuery.of(context).size.width / 4,
+                                height: MediaQuery.of(context).size.height / 8,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.rectangle,
+                                  borderRadius: BorderRadius.circular(25.0),
+                                  image: DecorationImage(
+                                    image: new AssetImage(
+                                        'Assets/images/hobbies.png'),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
+
+                              ),
+                              Text("Intrest & Hobbies",style: TextStyle(
+                                  color: Theme.of(context).primaryColor,
+                                  fontFamily: 'Oswald',
+                                  fontSize: 19.0,
+                                  fontWeight: FontWeight.w500,
+                                  fontStyle: FontStyle.normal),)
                             ],
                           ),
                         ],
@@ -330,21 +329,26 @@ class _HomePageState extends State<HomePage> {
                                 decoration: BoxDecoration(
                                     shape: BoxShape.rectangle,
                                     borderRadius: BorderRadius.circular(25.0),
-                                    color: Colors.grey.shade400,
+                                    color: Colors.lightBlue.shade300,
                                     boxShadow: [
                                       BoxShadow(color: Colors.black12),
                                     ]),
                                 child: IconButton(
-                                  splashColor: Colors.lightBlueAccent,
+                                  splashColor: Colors.pinkAccent,
                                   icon: Icon(
                                     Icons.arrow_forward_ios,
                                     size: 20.0,
-                                    color: Colors.white,
+                                    color: Colors.amber,
                                   ),
                                   onPressed: () {},
                                 ),
                               ),
-                              Text("Preview")
+                              Text("Preview",style: TextStyle(
+                                  color: Theme.of(context).primaryColor,
+                                  fontFamily: 'Oswald',
+                                  fontSize: 19.0,
+                                  fontWeight: FontWeight.w500,
+                                  fontStyle: FontStyle.normal),)
                             ],
                           ),
                         ],
@@ -362,21 +366,26 @@ class _HomePageState extends State<HomePage> {
                                 decoration: BoxDecoration(
                                     shape: BoxShape.rectangle,
                                     borderRadius: BorderRadius.circular(25.0),
-                                    color: Colors.grey.shade400,
+                                    color: Colors.lightBlue.shade300,
                                     boxShadow: [
                                       BoxShadow(color: Colors.black12),
                                     ]),
                                 child: IconButton(
-                                  splashColor: Colors.lightBlueAccent,
+                                  splashColor: Colors.pinkAccent,
                                   icon: Icon(
                                     Icons.file_download,
-                                    size: 20.0,
-                                    color: Colors.white,
+                                    size: 25.0,
+                                    color: Colors.amber,
                                   ),
                                   onPressed: () {},
                                 ),
                               ),
-                              Text("Download")
+                              Text("Download",style: TextStyle(
+                                  color: Theme.of(context).primaryColor,
+                                  fontFamily: 'Oswald',
+                                  fontSize: 19.0,
+                                  fontWeight: FontWeight.w500,
+                                  fontStyle: FontStyle.normal),)
                             ],
                           ),
                         ],

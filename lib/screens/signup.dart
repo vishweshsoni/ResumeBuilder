@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import "package:flutter/material.dart";
 
-class Login extends StatelessWidget{
+class SignUp extends StatelessWidget{
 
   BoxDecoration decoration = BoxDecoration(
       border: Border(
@@ -56,7 +56,9 @@ class LoginState extends State<LoginPage>{
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _autoValidate = false;
   bool loading = false;
+  FocusNode nameNode;
   FocusNode emailNode;
+
   FocusNode passawordNode;
 
   @override
@@ -122,7 +124,7 @@ class LoginState extends State<LoginPage>{
       width: double.infinity,
       child: new RaisedButton(
         color: Color.fromRGBO(0, 119, 119,1.0),
-        child: Text("Login",style:TextStyle(color: Colors.white70),),
+        child: Text("Sign me up",style:TextStyle(color: Colors.white70),),
         onPressed: (){
 //          Navigator.of(context).push(PageRouteBuilder(
 //              opaque: false,
@@ -175,7 +177,7 @@ class LoginState extends State<LoginPage>{
           Container(
             height: 150.0,
             alignment: Alignment.center,
-            child: Text("Login Here",style: TextStyle(fontSize: 50.0,color: Color.fromRGBO(0, 119, 119,1.0)),),
+            child: Text("SignUp",style: TextStyle(fontSize: 50.0,color: Color.fromRGBO(0, 119, 119,1.0)),),
           ),
           CustomSizeBox(height: 50.0),
           Container(
@@ -188,11 +190,32 @@ class LoginState extends State<LoginPage>{
                 TextFormField(
                   enabled: true,
                   enableInteractiveSelection: true,
+                  focusNode: nameNode,
+                  style: CustomTextStyle(),
+                  keyboardType: TextInputType.emailAddress,
+                  textInputAction:TextInputAction.next,
+                  decoration: CustomTextDecoration(icon: Icons.person,text: "UserName"),
+                  textCapitalization: TextCapitalization.none,
+                  onFieldSubmitted: (term){
+                    nameNode.unfocus();
+                    FocusScope.of(context).requestFocus(passawordNode);
+                  },
+                  validator: (value){
+                    if (value.isEmpty) {
+                      return 'Please enter Name';
+                    }else if(!new  RegExp(r"^[a-zA-Z.]").hasMatch(value)){
+                      return "Plase enter chracter ranging from [a-z or A-Z]";
+                    }
+                  },
+                ),
+                TextFormField(
+                  enabled: true,
+                  enableInteractiveSelection: true,
                   focusNode: emailNode,
                   style: CustomTextStyle(),
                   keyboardType: TextInputType.emailAddress,
                   textInputAction:TextInputAction.next,
-                  decoration: CustomTextDecoration(icon: Icons.person,text: "Email"),
+                  decoration: CustomTextDecoration(icon: Icons.email,text: "Email"),
                   textCapitalization: TextCapitalization.none,
                   onFieldSubmitted: (term){
                     emailNode.unfocus();
@@ -238,15 +261,14 @@ class LoginState extends State<LoginPage>{
                 SizedBox(height: MediaQuery.of(context).size.height/9,width: MediaQuery.of(context).size.width/9,),
                 GestureDetector(
                   onTap: (){
-                    print("signup pressed");
-                    Navigator.of(context).pushNamed('/SignupPage');
+
 
                   },
                   child: Container(
                     alignment: Alignment.center,
-                    child: Text("First time user SignUp",
+                    child: Text("",
                       style: TextStyle(
-                        color: Colors.white54
+                          color: Colors.white54
                       ),
                     ),
                   ),
