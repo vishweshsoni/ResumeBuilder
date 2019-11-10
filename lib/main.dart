@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:resume_app/screens/homepage.dart';
 import 'package:resume_app/screens/login.dart';
+import 'package:resume_app/screens/personaldetails.dart';
 import 'package:resume_app/screens/signup.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+
+  bool isLogin = true;
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -17,8 +20,9 @@ class MyApp extends StatelessWidget {
       routes: {
           '/HomePage': (context)=>HomePage(),
           '/SignupPage':(context)=>SignUp(),
+           '/PersonalDetails':(context)=>PersonalDetails(),
       },
-      home: Login(),
+      home: isLogin?Login():SignUp(),
     );
   }
 }

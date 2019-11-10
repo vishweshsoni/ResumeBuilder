@@ -44,8 +44,6 @@ class _HomePageState extends State<HomePage> {
                           maxRadius: 20.0,
                           backgroundImage: AssetImage(
                               'Assets/images/user.jpg',
-
-
                           ),
                         ),
                       ),
@@ -78,12 +76,17 @@ class _HomePageState extends State<HomePage> {
                                     ),
 
                               ),
-                              Text("Personal Detail",style: TextStyle(
-                                  color: Theme.of(context).primaryColor,
-                                  fontFamily: 'Oswald',
-                                  fontSize: 19.0,
-                                  fontWeight: FontWeight.w500,
-                                  fontStyle: FontStyle.normal),)
+                              GestureDetector(
+                                onTap: (){
+                                    Navigator.of(context).pushNamed("/PersonalDetails");
+                                },
+                                child: Text("Personal Detail",style: TextStyle(
+                                    color: Theme.of(context).primaryColor,
+                                    fontFamily: 'Oswald',
+                                    fontSize: 19.0,
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FontStyle.normal),),
+                              )
                             ],
                           ),
                         ],
