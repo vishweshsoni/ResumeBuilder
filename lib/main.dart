@@ -5,6 +5,8 @@ import 'package:resume_app/screens/signup.dart';
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+
+  bool isLogin = true;
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,7 @@ class MyApp extends StatelessWidget {
           '/HomePage': (context)=>HomePage(),
           '/SignupPage':(context)=>SignUp(),
       },
-      home: Login(),
+      home: isLogin?Login():SignUp(),
     );
   }
 }
