@@ -40,12 +40,12 @@ class _PersonalDetailsState extends State<PersonalDetails> {
           return ListView(
             children: snapshot.data
                 .map((user) => GestureDetector(
-                  onTap: (){
-                      if(user.name=="Ervin Howell"){
+                      onTap: () {
+                        if (user.name == "Ervin Howell") {
                           print("hi");
-                      }
-                  },
-                  child: ListTile(
+                        }
+                      },
+                      child: ListTile(
                         title: Text(user.name),
                         subtitle: Text(user.email),
                         leading: CircleAvatar(
@@ -54,12 +54,13 @@ class _PersonalDetailsState extends State<PersonalDetails> {
                               style: TextStyle(
                                 fontSize: 18.0,
                                 color: Colors.white,
-                              )
-                          ),
+                              )),
                         ),
-                    trailing: IconButton(icon: Icon(Icons.arrow_forward_ios),),
+                        trailing: IconButton(
+                          icon: Icon(Icons.arrow_forward_ios),
+                        ),
                       ),
-                ))
+                    ))
                 .toList(),
           );
         },
