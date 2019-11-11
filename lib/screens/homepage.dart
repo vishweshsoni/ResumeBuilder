@@ -18,44 +18,18 @@ class _HomePageState extends State<HomePage> {
     SizeConfig().init(context);
     return SafeArea(
       child: Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.blueGrey,
+            title: Center(child: Text("Resume Builder",style: TextStyle(color: Colors.white),)),
+            automaticallyImplyLeading: false, // Used for removing back buttoon.
 
+          ),
           body: Stack(
         children: <Widget>[
           Container(
             child: Column(
               children: <Widget>[
-                SizedBox(
-                  height: MediaQuery.of(context).size.height / 48,
-                ),
-                Container(
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: <Widget>[
-                      Container(
 
-                        child: Text(
-                          "Resume Builder",
-                          style: TextStyle(
-                              color: colorx,
-                              fontFamily: 'Oswald',
-                              fontSize: 30.0,
-                              fontWeight: FontWeight.w500,
-                              fontStyle: FontStyle.normal
-                          ),
-                        ),
-                      ),
-                      Container(
-                        child: CircleAvatar(
-                          maxRadius: 20.0,
-                          backgroundImage: AssetImage(
-                            'Assets/images/user.jpg',
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
                 SizedBox(
                   height: MediaQuery.of(context).size.height / 12,
                 ),
@@ -261,20 +235,20 @@ class _HomePageState extends State<HomePage> {
                                   borderRadius: BorderRadius.circular(25.0),
                                   image: DecorationImage(
                                     image: new AssetImage(
-                                        'Assets/images/responsibility.png'),
+                                        'Assets/images/awards.png'),
                                     fit: BoxFit.cover,
                                   ),
                                 ),
                               ),
                               Text(
-                                "Responsibility",
+                                "Achivements",
                                 style: TextStyle(
                                     color: colorx,
                                     fontFamily: 'Oswald',
                                     fontSize: 19.0,
                                     fontWeight: FontWeight.w500,
                                     fontStyle: FontStyle.normal),
-                              ),
+                              )
                             ],
                           ),
                         ],
@@ -290,36 +264,7 @@ class _HomePageState extends State<HomePage> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: <Widget>[
-                      Column(
-                        children: <Widget>[
-                          Column(
-                            children: <Widget>[
-                              Container(
-                                width: MediaQuery.of(context).size.width / 4,
-                                height: MediaQuery.of(context).size.height / 8,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.rectangle,
-                                  borderRadius: BorderRadius.circular(25.0),
-                                  image: DecorationImage(
-                                    image: new AssetImage(
-                                        'Assets/images/awards.png'),
-                                    fit: BoxFit.cover,
-                                  ),
-                                ),
-                              ),
-                              Text(
-                                "Award & Achivements",
-                                style: TextStyle(
-                                    color: colorx,
-                                    fontFamily: 'Oswald',
-                                    fontSize: 19.0,
-                                    fontWeight: FontWeight.w500,
-                                    fontStyle: FontStyle.normal),
-                              )
-                            ],
-                          ),
-                        ],
-                      ),
+
                       Column(
                         children: <Widget>[
                           Column(
