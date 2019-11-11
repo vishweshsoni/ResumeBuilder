@@ -3,12 +3,12 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 
-class PersonalDetails extends StatefulWidget {
+class EducationDetails extends StatefulWidget {
   @override
-  _PersonalDetailsState createState() => _PersonalDetailsState();
+  _EducationDetailsState createState() => _EducationDetailsState();
 }
 
-class _PersonalDetailsState extends State<PersonalDetails> {
+class _EducationDetailsState extends State<EducationDetails> {
   final String uri = 'https://jsonplaceholder.typicode.com/users';
   Future<List<Users>> _fetchUsers() async {
     var response = await http.get(uri);

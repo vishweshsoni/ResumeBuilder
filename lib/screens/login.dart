@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'personal_details.dart';
+import 'homepage.dart';
 
 import "package:flutter/material.dart";
 
@@ -142,7 +142,7 @@ class LoginState extends State<LoginPage>{
 //                );
 //              }
 //          ));
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>PersonalDetails()));
+        Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
           FocusScope.of(context).requestFocus(new FocusNode());
           if(_formKey.currentState.validate()){
             setState(() {

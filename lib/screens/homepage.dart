@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:resume_app/sizeconfig.dart';
+import 'personal_details.dart';
+import 'educationdetails.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -15,9 +17,7 @@ class _HomePageState extends State<HomePage> {
       child: Scaffold(
           body: Stack(
         children: <Widget>[
-
           Container(
-
             child: Column(
               children: <Widget>[
                 SizedBox(
@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
                         child: CircleAvatar(
                           maxRadius: 20.0,
                           backgroundImage: AssetImage(
-                              'Assets/images/user.jpg',
+                            'Assets/images/user.jpg',
                           ),
                         ),
                       ),
@@ -66,26 +66,33 @@ class _HomePageState extends State<HomePage> {
                                 width: MediaQuery.of(context).size.width / 4,
                                 height: MediaQuery.of(context).size.height / 8,
                                 decoration: BoxDecoration(
-                                    shape: BoxShape.rectangle,
-                                    borderRadius: BorderRadius.circular(25.0),
-                                    image: DecorationImage(
-                                      image: AssetImage(
-                                          'Assets/images/profile.png'),
-                                      fit: BoxFit.cover,
-                                    ),
-                                    ),
-
+                                  shape: BoxShape.rectangle,
+                                  borderRadius: BorderRadius.circular(25.0),
+                                  image: DecorationImage(
+                                    image:
+                                        AssetImage('Assets/images/profile.png'),
+                                    fit: BoxFit.cover,
+                                  ),
+                                ),
                               ),
                               GestureDetector(
-                                onTap: (){
-                                    Navigator.of(context).pushNamed("/PersonalDetails");
+                                onTap: () {
+
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) =>
+                                              PersonalDetails()));
                                 },
-                                child: Text("Personal Detail",style: TextStyle(
-                                    color: Theme.of(context).primaryColor,
-                                    fontFamily: 'Oswald',
-                                    fontSize: 19.0,
-                                    fontWeight: FontWeight.w500,
-                                    fontStyle: FontStyle.normal),),
+                                child: Text(
+                                  "Personal Detail",
+                                  style: TextStyle(
+                                      color: Theme.of(context).primaryColor,
+                                      fontFamily: 'Oswald',
+                                      fontSize: 19.0,
+                                      fontWeight: FontWeight.w500,
+                                      fontStyle: FontStyle.normal),
+                                ),
                               )
                             ],
                           ),
@@ -107,14 +114,24 @@ class _HomePageState extends State<HomePage> {
                                     fit: BoxFit.cover,
                                   ),
                                 ),
-
                               ),
-                              Text("Education",style: TextStyle(
-                                  color: Theme.of(context).primaryColor,
-                                  fontFamily: 'Oswald',
-                                  fontSize: 19.0,
-                                  fontWeight: FontWeight.w500,
-                                  fontStyle: FontStyle.normal),)
+                              GestureDetector(
+                                  onTap: () {
+                                    Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                EducationDetails()));
+                                  },
+                                  child: Text(
+                                    "Education",
+                                    style: TextStyle(
+                                        color: Theme.of(context).primaryColor,
+                                        fontFamily: 'Oswald',
+                                        fontSize: 19.0,
+                                        fontWeight: FontWeight.w500,
+                                        fontStyle: FontStyle.normal),
+                                  ))
                             ],
                           ),
                         ],
@@ -135,14 +152,16 @@ class _HomePageState extends State<HomePage> {
                                     fit: BoxFit.cover,
                                   ),
                                 ),
-
                               ),
-                              Text("Skills",style: TextStyle(
-                                  color: Theme.of(context).primaryColor,
-                                  fontFamily: 'Oswald',
-                                  fontSize: 19.0,
-                                  fontWeight: FontWeight.w500,
-                                  fontStyle: FontStyle.normal),)
+                              Text(
+                                "Skills",
+                                style: TextStyle(
+                                    color: Theme.of(context).primaryColor,
+                                    fontFamily: 'Oswald',
+                                    fontSize: 19.0,
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FontStyle.normal),
+                              )
                             ],
                           ),
                         ],
@@ -174,14 +193,16 @@ class _HomePageState extends State<HomePage> {
                                     fit: BoxFit.cover,
                                   ),
                                 ),
-
                               ),
-                              Text("Experience",style: TextStyle(
-                                  color: Theme.of(context).primaryColor,
-                                  fontFamily: 'Oswald',
-                                  fontSize: 19.0,
-                                  fontWeight: FontWeight.w500,
-                                  fontStyle: FontStyle.normal),)
+                              Text(
+                                "Experience",
+                                style: TextStyle(
+                                    color: Theme.of(context).primaryColor,
+                                    fontFamily: 'Oswald',
+                                    fontSize: 19.0,
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FontStyle.normal),
+                              )
                             ],
                           ),
                         ],
@@ -202,14 +223,16 @@ class _HomePageState extends State<HomePage> {
                                     fit: BoxFit.cover,
                                   ),
                                 ),
-
                               ),
-                              Text("Projects",style: TextStyle(
-                                  color: Theme.of(context).primaryColor,
-                                  fontFamily: 'Oswald',
-                                  fontSize: 19.0,
-                                  fontWeight: FontWeight.w500,
-                                  fontStyle: FontStyle.normal),)
+                              Text(
+                                "Projects",
+                                style: TextStyle(
+                                    color: Theme.of(context).primaryColor,
+                                    fontFamily: 'Oswald',
+                                    fontSize: 19.0,
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FontStyle.normal),
+                              )
                             ],
                           ),
                         ],
@@ -230,16 +253,16 @@ class _HomePageState extends State<HomePage> {
                                     fit: BoxFit.cover,
                                   ),
                                 ),
-
                               ),
-                              Text("Responsibility",style: TextStyle(
-                                  color: Theme.of(context).primaryColor,
-                                  fontFamily: 'Oswald',
-                                  fontSize: 19.0,
-                                  fontWeight: FontWeight.w500,
-                                  fontStyle: FontStyle.normal),),
-
-
+                              Text(
+                                "Responsibility",
+                                style: TextStyle(
+                                    color: Theme.of(context).primaryColor,
+                                    fontFamily: 'Oswald',
+                                    fontSize: 19.0,
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FontStyle.normal),
+                              ),
                             ],
                           ),
                         ],
@@ -271,14 +294,16 @@ class _HomePageState extends State<HomePage> {
                                     fit: BoxFit.cover,
                                   ),
                                 ),
-
                               ),
-                              Text("Award & Achivements",style: TextStyle(
-                                  color: Theme.of(context).primaryColor,
-                                  fontFamily: 'Oswald',
-                                  fontSize: 19.0,
-                                  fontWeight: FontWeight.w500,
-                                  fontStyle: FontStyle.normal),)
+                              Text(
+                                "Award & Achivements",
+                                style: TextStyle(
+                                    color: Theme.of(context).primaryColor,
+                                    fontFamily: 'Oswald',
+                                    fontSize: 19.0,
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FontStyle.normal),
+                              )
                             ],
                           ),
                         ],
@@ -299,14 +324,16 @@ class _HomePageState extends State<HomePage> {
                                     fit: BoxFit.cover,
                                   ),
                                 ),
-
                               ),
-                              Text("Intrest & Hobbies",style: TextStyle(
-                                  color: Theme.of(context).primaryColor,
-                                  fontFamily: 'Oswald',
-                                  fontSize: 19.0,
-                                  fontWeight: FontWeight.w500,
-                                  fontStyle: FontStyle.normal),)
+                              Text(
+                                "Intrest & Hobbies",
+                                style: TextStyle(
+                                    color: Theme.of(context).primaryColor,
+                                    fontFamily: 'Oswald',
+                                    fontSize: 19.0,
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FontStyle.normal),
+                              )
                             ],
                           ),
                         ],
@@ -346,12 +373,15 @@ class _HomePageState extends State<HomePage> {
                                   onPressed: () {},
                                 ),
                               ),
-                              Text("Preview",style: TextStyle(
-                                  color: Theme.of(context).primaryColor,
-                                  fontFamily: 'Oswald',
-                                  fontSize: 19.0,
-                                  fontWeight: FontWeight.w500,
-                                  fontStyle: FontStyle.normal),)
+                              Text(
+                                "Preview",
+                                style: TextStyle(
+                                    color: Theme.of(context).primaryColor,
+                                    fontFamily: 'Oswald',
+                                    fontSize: 19.0,
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FontStyle.normal),
+                              )
                             ],
                           ),
                         ],
@@ -383,12 +413,15 @@ class _HomePageState extends State<HomePage> {
                                   onPressed: () {},
                                 ),
                               ),
-                              Text("Download",style: TextStyle(
-                                  color: Theme.of(context).primaryColor,
-                                  fontFamily: 'Oswald',
-                                  fontSize: 19.0,
-                                  fontWeight: FontWeight.w500,
-                                  fontStyle: FontStyle.normal),)
+                              Text(
+                                "Download",
+                                style: TextStyle(
+                                    color: Theme.of(context).primaryColor,
+                                    fontFamily: 'Oswald',
+                                    fontSize: 19.0,
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FontStyle.normal),
+                              )
                             ],
                           ),
                         ],
@@ -400,8 +433,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ],
-       )
-      ),
+      )),
     );
   }
 }
