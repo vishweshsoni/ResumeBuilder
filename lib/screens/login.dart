@@ -16,7 +16,7 @@ class Login extends StatelessWidget{
 
   TextStyle CustomTextStyle(){
     return TextStyle(
-        color: Colors.white30,
+        color: Colors.blueGrey[700],
         fontSize: 15.0
     );
   }
@@ -39,7 +39,7 @@ class Login extends StatelessWidget{
     return  GestureDetector(
       onTap:()=> FocusScope.of(context).requestFocus(new FocusNode()),
       child:Scaffold(
-          backgroundColor: Color.fromRGBO(255, 0, 0, 0.0),
+          backgroundColor: Colors.white,
           body: SingleChildScrollView(
               child: LoginPage()
           )
@@ -81,7 +81,7 @@ class LoginState extends State<LoginPage>{
 
   TextStyle CustomTextStyle(){
     return TextStyle(
-        color: Colors.white30,
+        color: Colors.blueGrey[700],
         fontSize: 15.0
     );
   }
@@ -89,7 +89,7 @@ class LoginState extends State<LoginPage>{
   InputDecoration CustomTextDecoration({String text,IconData icon}){
     return InputDecoration(
       labelStyle: TextStyle(
-          color: Colors.white30
+        color: Colors.blueGrey[700],
       ),
       labelText: text,
       prefixIcon: Icon(icon,color: Colors.blueGrey[700]),
@@ -100,12 +100,12 @@ class LoginState extends State<LoginPage>{
       ),
       focusedBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-              color: Colors.white70
+            color: Colors.blueGrey[700],
           )
       ),
       errorBorder: UnderlineInputBorder(
           borderSide: BorderSide(
-              color: Colors.white70
+            color: Colors.blueGrey[700],
           )
       ),
     );
@@ -122,8 +122,8 @@ class LoginState extends State<LoginPage>{
       height: 45.0,
       width: double.infinity,
       child: new RaisedButton(
-        color: Color.fromRGBO(0, 119, 119,1.0),
-        child: Text("Login",style:TextStyle(color: Colors.white70),),
+        color: Colors.blueGrey[700],
+        child: Text("Login",style:TextStyle(color: Colors.white,),),
         onPressed: (){
 //          Navigator.of(context).push(PageRouteBuilder(
 //              opaque: false,
@@ -177,7 +177,7 @@ class LoginState extends State<LoginPage>{
           Container(
             height: 150.0,
             alignment: Alignment.center,
-            child: Text("Login Here",style: TextStyle(fontSize: 50.0,color: Color.fromRGBO(0, 119, 119,1.0)),),
+            child: Text("Login Here",style: TextStyle(fontSize: 50.0,color: Colors.blueGrey[700],),),
           ),
           CustomSizeBox(height: 50.0),
           Container(
@@ -233,7 +233,7 @@ class LoginState extends State<LoginPage>{
                   alignment: Alignment.center,
                   child: Text("Forgot password ?",
                     style: TextStyle(
-                      color: Colors.white30,
+                      color: Colors.blueGrey[700],
                     ),
                   ),
                 ),
@@ -248,7 +248,7 @@ class LoginState extends State<LoginPage>{
                     alignment: Alignment.center,
                     child: Text("First time user SignUp",
                       style: TextStyle(
-                        color: Colors.white54
+                        color: Colors.blueGrey[700],
                       ),
                     ),
                   ),
@@ -267,7 +267,7 @@ class LoginState extends State<LoginPage>{
       child: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        color: Colors.white12,
+        color: Colors.blueGrey[700],
         child: Center(
           child: SizedBox(
             height: 50.0,
