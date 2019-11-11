@@ -78,7 +78,7 @@ class _HomePageState extends State<HomePage> {
                               ),
                               GestureDetector(
                                 onTap: (){
-                                    Navigator.of(context).pushNamed("/PersonalDetails");
+
                                 },
                                 child: Text("Personal Detail",style: TextStyle(
                                     color: Theme.of(context).primaryColor,
@@ -109,12 +109,17 @@ class _HomePageState extends State<HomePage> {
                                 ),
 
                               ),
-                              Text("Education",style: TextStyle(
-                                  color: Theme.of(context).primaryColor,
-                                  fontFamily: 'Oswald',
-                                  fontSize: 19.0,
-                                  fontWeight: FontWeight.w500,
-                                  fontStyle: FontStyle.normal),)
+                              GestureDetector(
+                                onTap: (){
+                                  Navigator.of(context).pushNamed("/PersonalDetails");
+                                },
+                                child: Text("Education",style: TextStyle(
+                                    color: Theme.of(context).primaryColor,
+                                    fontFamily: 'Oswald',
+                                    fontSize: 19.0,
+                                    fontWeight: FontWeight.w500,
+                                    fontStyle: FontStyle.normal),),
+                              )
                             ],
                           ),
                         ],
