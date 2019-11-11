@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
+import 'addEduDetails.dart';
 
 class EducationDetails extends StatefulWidget {
   @override
@@ -29,7 +30,20 @@ class _EducationDetailsState extends State<EducationDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(''),
+        backgroundColor: Colors.blueGrey,
+        title: Text('Education Details',style: TextStyle(color: Colors.white),),
+        actions: <Widget>[
+
+          IconButton(
+            icon: const Icon(Icons.add),
+            iconSize: 30.0,
+            color: Colors.white,
+            onPressed: (){
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>AddEduDetails()));
+            },
+          ),
+
+        ],
       ),
       body: FutureBuilder<List<Users>>(
         future: _fetchUsers(),

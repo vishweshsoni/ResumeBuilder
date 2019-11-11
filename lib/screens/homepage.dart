@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:resume_app/sizeconfig.dart';
 import 'personal_details.dart';
 import 'educationdetails.dart';
+import 'skills.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -10,11 +11,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  Color colorx = Colors.blueGrey;
   @override
   Widget build(BuildContext context) {
+
     SizeConfig().init(context);
     return SafeArea(
       child: Scaffold(
+
           body: Stack(
         children: <Widget>[
           Container(
@@ -29,14 +33,16 @@ class _HomePageState extends State<HomePage> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: <Widget>[
                       Container(
+
                         child: Text(
                           "Resume Builder",
                           style: TextStyle(
-                              color: Theme.of(context).primaryColor,
+                              color: colorx,
                               fontFamily: 'Oswald',
                               fontSize: 30.0,
                               fontWeight: FontWeight.w500,
-                              fontStyle: FontStyle.normal),
+                              fontStyle: FontStyle.normal
+                          ),
                         ),
                       ),
                       Container(
@@ -87,7 +93,7 @@ class _HomePageState extends State<HomePage> {
                                 child: Text(
                                   "Personal Detail",
                                   style: TextStyle(
-                                      color: Theme.of(context).primaryColor,
+                                      color: colorx,
                                       fontFamily: 'Oswald',
                                       fontSize: 19.0,
                                       fontWeight: FontWeight.w500,
@@ -126,7 +132,7 @@ class _HomePageState extends State<HomePage> {
                                   child: Text(
                                     "Education",
                                     style: TextStyle(
-                                        color: Theme.of(context).primaryColor,
+                                        color: colorx,
                                         fontFamily: 'Oswald',
                                         fontSize: 19.0,
                                         fontWeight: FontWeight.w500,
@@ -153,15 +159,19 @@ class _HomePageState extends State<HomePage> {
                                   ),
                                 ),
                               ),
-                              Text(
+                              GestureDetector(
+                                onTap: (){
+                                  Navigator.push(context, MaterialPageRoute(builder: (context)=>Skills()));
+                                },
+                            child:  Text(
                                 "Skills",
                                 style: TextStyle(
-                                    color: Theme.of(context).primaryColor,
+                                    color: colorx,
                                     fontFamily: 'Oswald',
                                     fontSize: 19.0,
                                     fontWeight: FontWeight.w500,
                                     fontStyle: FontStyle.normal),
-                              )
+                              ))
                             ],
                           ),
                         ],
@@ -197,7 +207,7 @@ class _HomePageState extends State<HomePage> {
                               Text(
                                 "Experience",
                                 style: TextStyle(
-                                    color: Theme.of(context).primaryColor,
+                                    color: colorx,
                                     fontFamily: 'Oswald',
                                     fontSize: 19.0,
                                     fontWeight: FontWeight.w500,
@@ -227,7 +237,7 @@ class _HomePageState extends State<HomePage> {
                               Text(
                                 "Projects",
                                 style: TextStyle(
-                                    color: Theme.of(context).primaryColor,
+                                    color: colorx,
                                     fontFamily: 'Oswald',
                                     fontSize: 19.0,
                                     fontWeight: FontWeight.w500,
@@ -257,7 +267,7 @@ class _HomePageState extends State<HomePage> {
                               Text(
                                 "Responsibility",
                                 style: TextStyle(
-                                    color: Theme.of(context).primaryColor,
+                                    color: colorx,
                                     fontFamily: 'Oswald',
                                     fontSize: 19.0,
                                     fontWeight: FontWeight.w500,
@@ -298,7 +308,7 @@ class _HomePageState extends State<HomePage> {
                               Text(
                                 "Award & Achivements",
                                 style: TextStyle(
-                                    color: Theme.of(context).primaryColor,
+                                    color: colorx,
                                     fontFamily: 'Oswald',
                                     fontSize: 19.0,
                                     fontWeight: FontWeight.w500,
@@ -328,7 +338,7 @@ class _HomePageState extends State<HomePage> {
                               Text(
                                 "Intrest & Hobbies",
                                 style: TextStyle(
-                                    color: Theme.of(context).primaryColor,
+                                    color: colorx,
                                     fontFamily: 'Oswald',
                                     fontSize: 19.0,
                                     fontWeight: FontWeight.w500,
@@ -359,7 +369,7 @@ class _HomePageState extends State<HomePage> {
                                 decoration: BoxDecoration(
                                     shape: BoxShape.rectangle,
                                     borderRadius: BorderRadius.circular(25.0),
-                                    color: Colors.lightBlue.shade300,
+                                    color: colorx,
                                     boxShadow: [
                                       BoxShadow(color: Colors.black12),
                                     ]),
@@ -376,7 +386,7 @@ class _HomePageState extends State<HomePage> {
                               Text(
                                 "Preview",
                                 style: TextStyle(
-                                    color: Theme.of(context).primaryColor,
+                                    color: colorx,
                                     fontFamily: 'Oswald',
                                     fontSize: 19.0,
                                     fontWeight: FontWeight.w500,
@@ -399,7 +409,7 @@ class _HomePageState extends State<HomePage> {
                                 decoration: BoxDecoration(
                                     shape: BoxShape.rectangle,
                                     borderRadius: BorderRadius.circular(25.0),
-                                    color: Colors.lightBlue.shade300,
+                                    color: colorx,
                                     boxShadow: [
                                       BoxShadow(color: Colors.black12),
                                     ]),
@@ -416,7 +426,7 @@ class _HomePageState extends State<HomePage> {
                               Text(
                                 "Download",
                                 style: TextStyle(
-                                    color: Theme.of(context).primaryColor,
+                                    color: colorx,
                                     fontFamily: 'Oswald',
                                     fontSize: 19.0,
                                     fontWeight: FontWeight.w500,
