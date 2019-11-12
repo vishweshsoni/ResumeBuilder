@@ -15,6 +15,7 @@ class _AddEduDetailsState extends State<AddEduDetails> {
 
   @override
   Widget build(BuildContext context) {
+    SizeConfig().init(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blueGrey,
