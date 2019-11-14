@@ -70,7 +70,7 @@ class LoginState extends State<LoginPage>{
 
   Future<bool> _getLogin(String email, String password) async
   {
-    print("hii");
+
     String url = 'http://192.168.137.1:8080/user/login';
     Map<String,String> headers = {"Content-type": "application/json"};
 
