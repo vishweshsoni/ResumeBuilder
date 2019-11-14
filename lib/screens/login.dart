@@ -185,7 +185,7 @@ class LoginState extends State<LoginPage>{
             setState(() {
               loading = true;
             });
-            Future.delayed(Duration(seconds: 2),(){
+            Future.delayed(Duration(seconds: 5),(){
               setState(() {
                 loading = false;
               });
@@ -199,6 +199,7 @@ class LoginState extends State<LoginPage>{
               _autoValidate = true;
             });
           }
+
         },
       ),
     );
