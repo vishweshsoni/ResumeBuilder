@@ -13,6 +13,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
   TextEditingController dob = new TextEditingController();
   TextEditingController address = new TextEditingController();
 
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);

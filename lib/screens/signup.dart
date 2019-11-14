@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import "package:flutter/material.dart";
 
+import 'homepage.dart';
+
 class SignUp extends StatelessWidget{
 
   BoxDecoration decoration = BoxDecoration(
@@ -66,6 +68,29 @@ class LoginState extends State<LoginPage>{
   String email="";
   String password="";
 
+  Future<bool> _doSignup(String signup_name, String signup_email,String signup_password) async {
+    print("hii");
+    String url = 'http://192.168.137.1:8080/user/signup';
+    Map<String, String> headers = {"Content-type": "application/json"};
+
+    final response = await http.post(Uri.encodeFull(url),
+        headers: headers,
+          body: json.encode({"name": signup_name, "email": signup_email,"password":signup_password}));
+    print(response.body.toString() + "qwerty");
+
+    String ans = response.body.toString();
+
+    var responseJson = jsonDecode(ans);
+
+    var result = responseJson["error"];
+
+//        if(result==false)
+//          {
+//
+//          }
+    return result;
+  }
+
   @override
   void initState() {
     // TODO: implement initState
@@ -77,12 +102,16 @@ class LoginState extends State<LoginPage>{
   }
 
   //Make Sign up  Request for the api call
-  Future<String>  _makeSignUprequest() async{
+  Future<bool>  _makeSignUprequest(String name,String email,String password) async{
         String url = 'https://';
         final response = await http.post(Uri.encodeFull(url),
             headers: {"Content-Type": 'application/json',},
             body: json.encode({"name": name, "email": email,"password":password}));
-          print(response.toString());
+        print(response.body.toString() + "signup result");
+        String ans = response.body.toString();
+        var responseJson = jsonDecode(ans);
+        var result = responseJson["error"];
+          return result;
 
   }
 
@@ -143,7 +172,7 @@ class LoginState extends State<LoginPage>{
       child: new RaisedButton(
         color: Colors.blueGrey[700],
         child: Text("Sign me up",style:TextStyle(color: Colors.white),),
-        onPressed: (){
+        onPressed: () async{
 
           FocusScope.of(context).requestFocus(new FocusNode());
           if(_formKey.currentState.validate()){
@@ -168,6 +197,18 @@ class LoginState extends State<LoginPage>{
             });
 
           }
+          await _doSignup(name,email,password).then((res) {
+            if (!res) {
+
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => HomePage()));
+            } else {
+//                String ans =json.decode(res.toString());
+//                print(ans+"my ans");
+
+
+            }
+          });
         },
       ),
     );
