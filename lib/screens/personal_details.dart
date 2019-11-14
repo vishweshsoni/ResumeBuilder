@@ -30,6 +30,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
     super.initState();
   }
 
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);

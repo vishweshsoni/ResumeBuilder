@@ -1,6 +1,10 @@
-import 'package:flutter/material.dart';
+import 'dart:convert';
 
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import "package:flutter/material.dart";
+
+import 'homepage.dart';
 
 class SignUp extends StatelessWidget{
 
@@ -58,8 +62,34 @@ class LoginState extends State<LoginPage>{
   bool loading = false;
   FocusNode nameNode;
   FocusNode emailNode;
-
   FocusNode passawordNode;
+
+  String name="";
+  String email="";
+  String password="";
+
+  Future<bool> _doSignup(String signup_name, String signup_email,String signup_password) async {
+    print("hii");
+    String url = 'http://192.168.137.1:8080/user/signup';
+    Map<String, String> headers = {"Content-type": "application/json"};
+
+    final response = await http.post(Uri.encodeFull(url),
+        headers: headers,
+          body: json.encode({"name": signup_name, "email": signup_email,"password":signup_password}));
+    print(response.body.toString() + "qwerty");
+
+    String ans = response.body.toString();
+
+    var responseJson = jsonDecode(ans);
+
+    var result = responseJson["error"];
+
+//        if(result==false)
+//          {
+//
+//          }
+    return result;
+  }
 
   @override
   void initState() {
@@ -70,6 +100,23 @@ class LoginState extends State<LoginPage>{
     loading = false;
 
   }
+
+  //Make Sign up  Request for the api call
+  Future<bool>  _makeSignUprequest(String name,String email,String password) async{
+        String url = 'https://';
+        final response = await http.post(Uri.encodeFull(url),
+            headers: {"Content-Type": 'application/json',},
+            body: json.encode({"name": name, "email": email,"password":password}));
+        print(response.body.toString() + "signup result");
+        String ans = response.body.toString();
+        var responseJson = jsonDecode(ans);
+        var result = responseJson["error"];
+          return result;
+
+  }
+
+
+
 
   BoxDecoration decoration = BoxDecoration(
       border: Border(
@@ -125,8 +172,8 @@ class LoginState extends State<LoginPage>{
       child: new RaisedButton(
         color: Colors.blueGrey[700],
         child: Text("Sign me up",style:TextStyle(color: Colors.white),),
-        onPressed: (){
-          Navigator.of(context).pushNamed('/HomePage');
+        onPressed: () async{
+
           FocusScope.of(context).requestFocus(new FocusNode());
           if(_formKey.currentState.validate()){
             setState(() {
@@ -141,11 +188,27 @@ class LoginState extends State<LoginPage>{
 
               ));
             });
+
+
           }else{
             setState(() {
               _autoValidate = true;
+
             });
+
           }
+          await _doSignup(name,email,password).then((res) {
+            if (!res) {
+
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => HomePage()));
+            } else {
+//                String ans =json.decode(res.toString());
+//                print(ans+"my ans");
+
+
+            }
+          });
         },
       ),
     );
@@ -189,6 +252,8 @@ class LoginState extends State<LoginPage>{
                       return 'Please enter Name';
                     }else if(!new  RegExp(r"^[a-zA-Z.]").hasMatch(value)){
                       return "Plase enter chracter ranging from [a-z or A-Z]";
+                    }else{
+                      name=value.toString();
                     }
                   },
                 ),
@@ -210,6 +275,8 @@ class LoginState extends State<LoginPage>{
                       return 'Please enter email';
                     }else if(!new  RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)){
                       return "Plase enter valid email";
+                    }else{
+                      email=value.toString();
                     }
                   },
                 ),
@@ -226,6 +293,8 @@ class LoginState extends State<LoginPage>{
                       return 'Please enter password';
                     }else if(value.length < 6){
                       return 'Password must be 6 digit';
+                    }else{
+                        password=value.toString();
                     }
                   },
                 ),
