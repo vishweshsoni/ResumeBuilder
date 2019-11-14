@@ -1,12 +1,11 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:resume_app/data/user.dart';
 import 'homepage.dart';
 import 'package:http/http.dart' as http;
 import 'package:dio/dio.dart';
-
 import "package:flutter/material.dart";
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatelessWidget {
   BoxDecoration decoration = BoxDecoration(
@@ -45,7 +44,11 @@ class LoginPage extends StatefulWidget {
   createState() => LoginState();
 }
 
-class LoginState extends State<LoginPage> {
+
+class LoginState extends State<LoginPage>{
+
+  SharedPreferences prefs;
+
   TextEditingController email1 = new TextEditingController();
   TextEditingController password = new TextEditingController();
 
@@ -82,11 +85,18 @@ class LoginState extends State<LoginPage> {
 
     var result = responseJson["error"];
 
-       if(result==false)
+
+        var u_id = responseJson["data"]["id"].toString();
+        prefs = await SharedPreferences.getInstance();
+        print("personal_de");
+        print(u_id);
+
+        if(result==false)
           {
-          Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
-         }
-    return result;
+            prefs.setString('u_id', u_id);
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
+          }
+
 
   }
 
@@ -142,7 +152,10 @@ class LoginState extends State<LoginPage> {
             setState(() {
               loading = true;
             });
+
+
             Future.delayed(Duration(seconds: 7), () {
+
               setState(() {
                 loading = false;
               });
@@ -156,11 +169,13 @@ class LoginState extends State<LoginPage> {
             });
           }
 
+
           await _getLogin(email1.text, password.text);
 
 
 
 //            Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
+
         },
       ),
     );
