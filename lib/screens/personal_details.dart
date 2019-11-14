@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:resume_app/sizeconfig.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class PersonalDetails extends StatefulWidget {
   @override
@@ -8,10 +9,26 @@ class PersonalDetails extends StatefulWidget {
 
 class _PersonalDetailsState extends State<PersonalDetails> {
 
+  SharedPreferences prefs;
+  var u_id;
+
   TextEditingController name = new TextEditingController();
   TextEditingController email = new TextEditingController();
   TextEditingController dob = new TextEditingController();
   TextEditingController address = new TextEditingController();
+
+  getdata() async{
+    prefs = await SharedPreferences.getInstance();
+    u_id = prefs.getString("u_id");
+    print(u_id);
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    getdata();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

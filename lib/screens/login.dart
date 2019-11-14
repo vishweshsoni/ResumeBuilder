@@ -1,11 +1,10 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'homepage.dart';
 import 'package:http/http.dart' as http;
 import 'package:dio/dio.dart';
-
 import "package:flutter/material.dart";
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatelessWidget{
 
@@ -60,6 +59,7 @@ class LoginPage extends StatefulWidget{
 
 class LoginState extends State<LoginPage>{
 
+  SharedPreferences prefs;
   TextEditingController email1 = new TextEditingController();
   TextEditingController password = new TextEditingController();
 
@@ -97,9 +97,14 @@ class LoginState extends State<LoginPage>{
 
         var result = responseJson["error"];
 
+        var u_id = responseJson["data"]["id"].toString();
+        prefs = await SharedPreferences.getInstance();
+        print("personal_de");
+        print(u_id);
+
         if(result==false)
           {
-            print(result);
+            prefs.setString('u_id', u_id);
             Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
           }
 
