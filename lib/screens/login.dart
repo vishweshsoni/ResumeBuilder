@@ -1,9 +1,14 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'homepage.dart';
+import 'package:http/http.dart' as http;
+import 'package:dio/dio.dart';
 
 import "package:flutter/material.dart";
 
 class Login extends StatelessWidget{
+
 
   BoxDecoration decoration = BoxDecoration(
       border: Border(
@@ -33,6 +38,7 @@ class Login extends StatelessWidget{
   FocusNode emailNode = FocusNode();
   FocusNode passawordNode = FocusNode();
 
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -54,7 +60,11 @@ class LoginPage extends StatefulWidget{
 
 class LoginState extends State<LoginPage>{
 
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  TextEditingController email1 = new TextEditingController();
+  TextEditingController password = new TextEditingController();
+
+
+  final _formKey = GlobalKey<FormState>();
   bool _autoValidate = false;
   bool loading = false;
   FocusNode emailNode;
@@ -67,6 +77,31 @@ class LoginState extends State<LoginPage>{
     passawordNode = FocusNode();
     emailNode = FocusNode();
     loading = false;
+
+  }
+
+  Future<String> _getLogin(String email, String password) async
+  {
+    print("hii");
+    String url = 'http://192.168.137.1:8080/user/login';
+    Map<String,String> headers = {"Content-type": "application/json"};
+
+    final response = await http.post(Uri.encodeFull(url),
+        headers: headers,
+        body: json.encode({"id": email, "password": password}));
+        print(response.body.toString() + "qwerty");
+
+        String ans = response.body.toString();
+
+        var responseJson = jsonDecode(ans);
+
+        var result = responseJson["error"];
+
+        if(result==false)
+          {
+            print(result);
+            Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
+          }
 
   }
 
@@ -142,7 +177,9 @@ class LoginState extends State<LoginPage>{
 //                );
 //              }
 //          ));
-        Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
+
+  //      Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
+          _getLogin(email1.text, password.text);
           FocusScope.of(context).requestFocus(new FocusNode());
           if(_formKey.currentState.validate()){
             setState(() {
@@ -168,6 +205,7 @@ class LoginState extends State<LoginPage>{
   }
 
   Widget LoginUi(){
+
     return Form(
       key: _formKey,
       autovalidate: _autoValidate,
@@ -188,6 +226,7 @@ class LoginState extends State<LoginPage>{
                     decoration: decoration
                 ),
                 TextFormField(
+                  controller: email1,
                   enabled: true,
                   enableInteractiveSelection: true,
                   focusNode: emailNode,
@@ -209,6 +248,7 @@ class LoginState extends State<LoginPage>{
                   },
                 ),
                 TextFormField(
+                  controller: password,
                   enabled: true,
                   enableInteractiveSelection: true,
                   obscureText: true,
