@@ -1,5 +1,7 @@
-import 'package:flutter/material.dart';
+import 'dart:convert';
 
+import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 import "package:flutter/material.dart";
 
 class SignUp extends StatelessWidget{
@@ -58,8 +60,11 @@ class LoginState extends State<LoginPage>{
   bool loading = false;
   FocusNode nameNode;
   FocusNode emailNode;
-
   FocusNode passawordNode;
+
+  String name="";
+  String email="";
+  String password="";
 
   @override
   void initState() {
@@ -70,6 +75,19 @@ class LoginState extends State<LoginPage>{
     loading = false;
 
   }
+
+  //Make Sign up  Request for the api call
+  Future<String>  _makeSignUprequest() async{
+        String url = 'https://';
+        final response = await http.post(Uri.encodeFull(url),
+            headers: {"Content-Type": 'application/json',},
+            body: json.encode({"name": name, "email": email,"password":password}));
+          print(response.toString());
+
+  }
+
+
+
 
   BoxDecoration decoration = BoxDecoration(
       border: Border(
@@ -126,7 +144,7 @@ class LoginState extends State<LoginPage>{
         color: Colors.blueGrey[700],
         child: Text("Sign me up",style:TextStyle(color: Colors.white),),
         onPressed: (){
-          Navigator.of(context).pushNamed('/HomePage');
+
           FocusScope.of(context).requestFocus(new FocusNode());
           if(_formKey.currentState.validate()){
             setState(() {
@@ -141,10 +159,14 @@ class LoginState extends State<LoginPage>{
 
               ));
             });
+
+
           }else{
             setState(() {
               _autoValidate = true;
+
             });
+
           }
         },
       ),
@@ -189,6 +211,8 @@ class LoginState extends State<LoginPage>{
                       return 'Please enter Name';
                     }else if(!new  RegExp(r"^[a-zA-Z.]").hasMatch(value)){
                       return "Plase enter chracter ranging from [a-z or A-Z]";
+                    }else{
+                      name=value.toString();
                     }
                   },
                 ),
@@ -210,6 +234,8 @@ class LoginState extends State<LoginPage>{
                       return 'Please enter email';
                     }else if(!new  RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(value)){
                       return "Plase enter valid email";
+                    }else{
+                      email=value.toString();
                     }
                   },
                 ),
@@ -226,6 +252,8 @@ class LoginState extends State<LoginPage>{
                       return 'Please enter password';
                     }else if(value.length < 6){
                       return 'Password must be 6 digit';
+                    }else{
+                        password=value.toString();
                     }
                   },
                 ),
