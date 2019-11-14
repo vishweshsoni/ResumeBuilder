@@ -69,7 +69,7 @@ class LoginState extends State<LoginPage>{
   bool loading = false;
   FocusNode emailNode;
   FocusNode passawordNode;
-
+  String tobeDisplayed="Hi";
   @override
   void initState() {
     // TODO: implement initState
@@ -80,7 +80,7 @@ class LoginState extends State<LoginPage>{
 
   }
 
-  Future<String> _getLogin(String email, String password) async
+  Future<bool> _getLogin(String email, String password) async
   {
     print("hii");
     String url = 'http://192.168.137.1:8080/user/login';
@@ -97,11 +97,11 @@ class LoginState extends State<LoginPage>{
 
         var result = responseJson["error"];
 
-        if(result==false)
-          {
-            print(result);
-            Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
-          }
+//        if(result==false)
+//          {
+//
+//          }
+        return result;
 
   }
 
@@ -159,38 +159,20 @@ class LoginState extends State<LoginPage>{
       child: new RaisedButton(
         color: Colors.blueGrey[700],
         child: Text("Login",style:TextStyle(color: Colors.white,),),
-        onPressed: (){
-//          Navigator.of(context).push(PageRouteBuilder(
-//              opaque: false,
-//              barrierDismissible: true,
-//              barrierColor: Colors.white12,
-//              pageBuilder: (context,_,__){
-//                return Center(
-//                  child: Container(
-//                    height: 200.0,
-//                    width: 200.0,
-//                    decoration: BoxDecoration(
-//                      color: Colors.white,
-//                      borderRadius: BorderRadius.circular(5.0)
-//                    ),
-//                  )
-//                );
-//              }
-//          ));
+        onPressed: () async {
 
-  //      Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
-          _getLogin(email1.text, password.text);
+
           FocusScope.of(context).requestFocus(new FocusNode());
           if(_formKey.currentState.validate()){
             setState(() {
               loading = true;
             });
-            Future.delayed(Duration(seconds: 2),(){
+            Future.delayed(Duration(seconds: 7),(){
               setState(() {
                 loading = false;
               });
               Scaffold.of(context).showSnackBar(new SnackBar(
-                content: new Text("Login success"),
+                content: new Text('${tobeDisplayed}'),
 
               ));
             });
@@ -199,6 +181,22 @@ class LoginState extends State<LoginPage>{
               _autoValidate = true;
             });
           }
+
+          await _getLogin(email1.text, password.text).then((res){
+            if(!res){
+                    tobeDisplayed="Login Success!";
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
+            }else{
+
+                tobeDisplayed=res.toString();
+            }
+          });
+
+
+
+//            Navigator.push(context, MaterialPageRoute(builder: (context)=>HomePage()));
+
+
         },
       ),
     );
