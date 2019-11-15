@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:resume_app/screens/educationdetails1.dart';
 import 'package:resume_app/screens/homepage.dart';
 import 'package:resume_app/screens/login.dart';
 import 'package:resume_app/screens/educationdetails.dart';
@@ -20,7 +21,8 @@ class MyApp extends StatelessWidget {
       routes: {
           '/HomePage': (context)=>HomePage(),
           '/SignupPage':(context)=>SignUp(),
-           '/PersonalDetails':(context)=>EducationDetails(),
+           '/PersonalDetails':(context)=>EducationDetails1(),
+
       },
       home: isLogin?Login():SignUp(),
     );

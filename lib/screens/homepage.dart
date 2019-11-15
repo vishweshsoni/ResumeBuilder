@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:resume_app/sizeconfig.dart';
+import 'educationdetails1.dart';
 import 'personal_details.dart';
 import 'educationdetails.dart';
 import 'Awards.dart';
@@ -106,7 +107,7 @@ class _HomePageState extends State<HomePage> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  EducationDetails()));
+                                                  EducationDetails1()));
                                     },
                                     child: Text(
                                       "Education",

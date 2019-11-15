@@ -75,7 +75,7 @@ class LoginState extends State<LoginPage>{
 
     final response = await http.post(Uri.encodeFull(url),
         headers: headers,
-          body: json.encode({"name": signup_name, "email": signup_email,"password":signup_password}));
+          body: json.encode({"id": signup_name, "email": signup_email,"password":signup_password}));
     print(response.body.toString() + "qwerty");
 
     String ans = response.body.toString();
@@ -84,10 +84,11 @@ class LoginState extends State<LoginPage>{
 
     var result = responseJson["error"];
 
-//        if(result==false)
-//          {
-//
-//          }
+        if(result==false)
+          {
+            Navigator.push(
+                context, MaterialPageRoute(builder: (context) => HomePage()));
+            }
     return result;
   }
 
@@ -102,16 +103,17 @@ class LoginState extends State<LoginPage>{
   }
 
   //Make Sign up  Request for the api call
-  Future<bool>  _makeSignUprequest(String name,String email,String password) async{
-        String url = 'https://';
+  Future<String>  _makeSignUprequest(String name1,String email1,String password1) async{
+    String url = 'http://192.168.137.1:8080/user/signup';
         final response = await http.post(Uri.encodeFull(url),
             headers: {"Content-Type": 'application/json',},
-            body: json.encode({"name": name, "email": email,"password":password}));
+            body: json.encode({"id": email1, "password": password1,"name":name1}));
         print(response.body.toString() + "signup result");
         String ans = response.body.toString();
         var responseJson = jsonDecode(ans);
         var result = responseJson["error"];
-          return result;
+
+          return result.toString();
 
   }
 
@@ -197,18 +199,7 @@ class LoginState extends State<LoginPage>{
             });
 
           }
-          await _doSignup(name,email,password).then((res) {
-            if (!res) {
-
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => HomePage()));
-            } else {
-//                String ans =json.decode(res.toString());
-//                print(ans+"my ans");
-
-
-            }
-          });
+            await _doSignup(name,email,password);
         },
       ),
     );

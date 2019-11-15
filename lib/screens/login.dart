@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:resume_app/data/user.dart';
+import 'package:resume_app/model/user.dart';
 import 'homepage.dart';
 import 'package:http/http.dart' as http;
 import 'package:dio/dio.dart';
@@ -70,7 +70,7 @@ class LoginState extends State<LoginPage>{
 
   Future<bool> _getLogin(String email, String password) async
   {
-    print("hii");
+
     String url = 'http://192.168.137.1:8080/user/login';
     Map<String,String> headers = {"Content-type": "application/json"};
 
