@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:resume_app/sizeconfig.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'educationdetails1.dart';
 import 'personal_details.dart';
 import 'educationdetails.dart';
@@ -15,6 +16,27 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  SharedPreferences prefs;
+  var u_id;
+  String uid="";
+
+
+  getdata() async{
+    prefs = await SharedPreferences.getInstance();
+    u_id = prefs.getString("u_id");
+    uid = u_id.toString();
+    print(u_id);
+
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    getdata();
+    super.initState();
+  }
+
+
   Color colorx = Colors.blueGrey;
   @override
   Widget build(BuildContext context) {
@@ -108,7 +130,7 @@ class _HomePageState extends State<HomePage> {
                                           context,
                                           MaterialPageRoute(
                                               builder: (context) =>
-                                                  EducationDetails1()));
+                                                  EducationDetails1(u_id)));
                                     },
                                     child: Text(
                                       "Education",
