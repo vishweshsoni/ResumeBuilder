@@ -47,7 +47,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
   {
     print("hello");
     print(uid);
-    String url = 'http://192.168.137.1:8080/user/getUserById/'+uid;
+    String url = 'http://resume-builder1.herokuapp.com/user/getUserById/'+uid;
     print(url);
     Map<String,String> headers = {"Content-type": "application/json"};
 
