@@ -38,22 +38,23 @@ class _SkillsState extends State<Skills> {
   {
     print("hello");
     print(uid);
-    String url = 'http://192.168.137.1:8080/user/getUserById/'+uid;
+    String url = 'http://resume-builder1.herokuapp.com/resume/getSkills/'+uid;
     print(url);
     Map<String,String> headers = {"Content-type": "application/json"};
 
     final data = await http.get(Uri.encodeFull(url),headers: headers);
     var jsonData1 = json.decode(data.body.toString());
-    String email = jsonData1["data"]["id"];
-    String name = jsonData1["data"]["name"];
-    String dob = jsonData1["data"]["dob"];
-    String address = jsonData1["data"]["address"];
+    String a_of_interest = jsonData1["data"][0]["area_of_interest"];
+    String prog_lang = jsonData1["data"][0]["prog_lang"].toString();
+    String framework = jsonData1["data"][0]["framework"];
+    String tools = jsonData1["data"][0]["tools"];
+    String technologies = jsonData1["data"][0]["technologies"];
 
-    controller_area_of_interest =  TextEditingController(text: name);
-    controller_prog_lang =  TextEditingController(text: email);
-    controller_framework =  TextEditingController(text: dob);
-    controller_tools =  TextEditingController(text: address);
-    controller_technologies = TextEditingController(text: address);
+    controller_area_of_interest =  TextEditingController(text: a_of_interest);
+    controller_prog_lang =  TextEditingController(text: prog_lang);
+    controller_framework =  TextEditingController(text: framework);
+    controller_tools =  TextEditingController(text: tools);
+    controller_technologies = TextEditingController(text: technologies);
 
     print("userdetails");
     print(jsonData1);
@@ -66,6 +67,8 @@ class _SkillsState extends State<Skills> {
     getdata();
     super.initState();
   }
+
+
 
   Future<String> _AddSkills(String a_of_interest,String prog_lang,String framework,String tools, String technologies) async
   {
@@ -140,6 +143,7 @@ class _SkillsState extends State<Skills> {
                 child: Column(
                   children: <Widget>[
                     TextField(
+                      autofocus: true,
                       controller: controller_area_of_interest,
                       decoration: InputDecoration(
                         labelText: "Area of Interest",

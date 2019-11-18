@@ -7,6 +7,7 @@ import 'educationdetails.dart';
 import 'Awards.dart';
 import 'Experience.dart';
 import 'skills.dart';
+import 'interest.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -294,14 +295,19 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ),
                                 ),
-                                Text(
-                                  "Intrest & Hobbies",
-                                  style: TextStyle(
-                                      color: colorx,
-                                      fontFamily: 'Oswald',
-                                      fontSize: 19.0,
-                                      fontWeight: FontWeight.w500,
-                                      fontStyle: FontStyle.normal),
+                                GestureDetector(
+                                  onTap: (){
+                                    Navigator.push(context, MaterialPageRoute(builder: (context)=>Interest()));
+                                  },
+                                  child: Text(
+                                    "Intrest & Hobbies",
+                                    style: TextStyle(
+                                        color: colorx,
+                                        fontFamily: 'Oswald',
+                                        fontSize: 19.0,
+                                        fontWeight: FontWeight.w500,
+                                        fontStyle: FontStyle.normal),
+                                  ),
                                 )
                               ],
                             ),
