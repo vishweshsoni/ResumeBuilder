@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:resume_app/sizeconfig.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import 'educationdetails1.dart';
+
 
 class AddEduDetails extends StatefulWidget {
   @override
@@ -8,10 +14,63 @@ class AddEduDetails extends StatefulWidget {
 
 class _AddEduDetailsState extends State<AddEduDetails> {
 
-  TextEditingController degree = new TextEditingController();
-  TextEditingController uni = new TextEditingController();
-  TextEditingController year = new TextEditingController();
-  TextEditingController cpi = new TextEditingController();
+  SharedPreferences prefs;
+  var u_id;
+  String uid="";
+
+  TextEditingController controllerDegree = new TextEditingController();
+  TextEditingController controllerUni = new TextEditingController();
+  TextEditingController controllerYear = new TextEditingController();
+  TextEditingController controllerCpi = new TextEditingController();
+
+
+  getdata() async{
+    prefs = await SharedPreferences.getInstance();
+    u_id = prefs.getString("u_id");
+    uid = u_id.toString();
+    print("vidisha");
+    print(u_id);
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    getdata();
+    super.initState();
+  }
+
+  Future<String> _AddEducationDetails(String degree,String uni,String year, String cpi) async
+  {
+    String url = 'http://resume-builder1.herokuapp.com/resume/addEducation/'+uid;
+    print(url);
+    Map<String,String> headers = {"Content-type": "application/json"};
+
+    final response = await http.post(Uri.encodeFull(url),
+        headers: headers,
+        body: json.encode({"degree": degree, "university": uni, "year": year, "cpi": cpi}));
+    print(response.body.toString() + "qwerty");
+
+    String ans = response.body.toString();
+
+    var responseJson = jsonDecode(ans);
+
+    var result = responseJson["error"];
+
+    if(result==false)
+    {
+      Fluttertoast.showToast(
+          msg: "Added Details",
+          toastLength: Toast.LENGTH_SHORT,
+          gravity: ToastGravity.CENTER,
+          timeInSecForIos: 1,
+          backgroundColor: Colors.grey,
+          textColor: Colors.black87,
+          fontSize: 16.0
+      );
+      Navigator.push(context, MaterialPageRoute(builder: (context)=>EducationDetails1(uid)));
+    }
+
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +90,10 @@ class _AddEduDetailsState extends State<AddEduDetails> {
             icon: const Icon(Icons.check),
             iconSize: 30.0,
             color: Colors.white,
-            onPressed: (){},
+            onPressed: (){
+              _AddEducationDetails(controllerDegree.text, controllerUni.text, controllerYear.text, controllerCpi.text);
+
+            },
           ),
         ],
       ),
@@ -51,7 +113,7 @@ class _AddEduDetailsState extends State<AddEduDetails> {
                 child: Column(
                   children: <Widget>[
                     TextField(
-                      controller: degree,
+                      controller: controllerDegree,
                       decoration: InputDecoration(
                         prefixIcon: Icon(Icons.school, color: Colors.blueGrey, size: 25.0,),
                         labelText: "Degree",
@@ -73,7 +135,7 @@ class _AddEduDetailsState extends State<AddEduDetails> {
                       height: 20.0,
                     ),
                     TextField(
-                      controller: uni,
+                      controller: controllerUni,
                       decoration: InputDecoration(
                         prefixIcon: Icon(Icons.school, color: Colors.blueGrey, size: 25.0,),
                         labelText: "University",
@@ -95,7 +157,7 @@ class _AddEduDetailsState extends State<AddEduDetails> {
                       height: 20.0,
                     ),
                     TextField(
-                      controller: year,
+                      controller: controllerYear,
                       decoration: InputDecoration(
                         prefixIcon: Icon(Icons.date_range, color: Colors.blueGrey, size: 25.0,),
                         labelText: "Year",
@@ -117,7 +179,7 @@ class _AddEduDetailsState extends State<AddEduDetails> {
                       height: 20.0,
                     ),
                     TextField(
-                      controller: cpi,
+                      controller: controllerCpi,
                       decoration: InputDecoration(
                         prefixIcon: Icon(Icons.playlist_add, color: Colors.blueGrey, size: 25.0,),
                         labelText: "CPI/Percentage",
