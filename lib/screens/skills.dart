@@ -90,7 +90,10 @@ class _SkillsState extends State<Skills> {
             icon: const Icon(Icons.check),
             iconSize: 30.0,
             color: Colors.white,
-            onPressed: (){},
+            onPressed: (){
+              _AddSkills(controller_area_of_interest.text, controller_prog_lang.text,
+                  controller_framework.text, controller_tools.text, controller_technologies.text);
+            },
           ),
         ],
       ),
