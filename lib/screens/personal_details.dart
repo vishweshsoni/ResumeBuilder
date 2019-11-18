@@ -69,7 +69,7 @@ class _PersonalDetailsState extends State<PersonalDetails> {
   }
   Future<String> _AddPersonalDetails(String dob,String address) async
   {
-    String url = 'http://192.168.137.1:8080/resume/addUserDetail/'+uid;
+    String url = 'http://resume-builder1.herokuapp.com/resume/addUserDetail/'+uid;
     Map<String,String> headers = {"Content-type": "application/json"};
 
     final response = await http.post(Uri.encodeFull(url),
