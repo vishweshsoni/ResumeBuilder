@@ -31,6 +31,33 @@ class _SkillsState extends State<Skills> {
     u_id = prefs.getString("u_id");
     uid = u_id.toString();
     print(u_id);
+    _getSkillDetails();
+  }
+
+  Future<String>_getSkillDetails() async
+  {
+    print("hello");
+    print(uid);
+    String url = 'http://192.168.137.1:8080/user/getUserById/'+uid;
+    print(url);
+    Map<String,String> headers = {"Content-type": "application/json"};
+
+    final data = await http.get(Uri.encodeFull(url),headers: headers);
+    var jsonData1 = json.decode(data.body.toString());
+    String email = jsonData1["data"]["id"];
+    String name = jsonData1["data"]["name"];
+    String dob = jsonData1["data"]["dob"];
+    String address = jsonData1["data"]["address"];
+
+    controller_area_of_interest =  TextEditingController(text: name);
+    controller_prog_lang =  TextEditingController(text: email);
+    controller_framework =  TextEditingController(text: dob);
+    controller_tools =  TextEditingController(text: address);
+    controller_technologies = TextEditingController(text: address);
+
+    print("userdetails");
+    print(jsonData1);
+
   }
 
   @override
@@ -42,7 +69,7 @@ class _SkillsState extends State<Skills> {
 
   Future<String> _AddSkills(String a_of_interest,String prog_lang,String framework,String tools, String technologies) async
   {
-    String url = 'http://192.168.137.1:8080/resume/addSkill/'+uid;
+    String url = 'http://resume-builder1.herokuapp.com/resume/addSkill/'+uid;
     Map<String,String> headers = {"Content-type": "application/json"};
 
     final response = await http.post(Uri.encodeFull(url),

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import "package:flutter/material.dart";
+import 'login.dart';
 
 import 'homepage.dart';
 
@@ -44,18 +45,18 @@ class SignUp extends StatelessWidget{
       child:Scaffold(
           backgroundColor: Colors.white,
           body: SingleChildScrollView(
-              child: LoginPage()
+              child: SignupPage()
           )
       ),
     );
   }
 }
 
-class LoginPage extends StatefulWidget{
+class SignupPage extends StatefulWidget{
   createState() => LoginState();
 }
 
-class LoginState extends State<LoginPage>{
+class LoginState extends State<SignupPage>{
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _autoValidate = false;
@@ -70,12 +71,12 @@ class LoginState extends State<LoginPage>{
 
   Future<bool> _doSignup(String signup_name, String signup_email,String signup_password) async {
     print("hii");
-    String url = 'http://192.168.137.1:8080/user/signup';
+    String url = 'http://resume-builder1.herokuapp.com/user/signup';
     Map<String, String> headers = {"Content-type": "application/json"};
 
     final response = await http.post(Uri.encodeFull(url),
         headers: headers,
-          body: json.encode({"id": signup_name, "email": signup_email,"password":signup_password}));
+          body: json.encode({"id": signup_email, "name": signup_name,"password":signup_password}));
     print(response.body.toString() + "qwerty");
 
     String ans = response.body.toString();
@@ -87,7 +88,7 @@ class LoginState extends State<LoginPage>{
         if(result==false)
           {
             Navigator.push(
-                context, MaterialPageRoute(builder: (context) => HomePage()));
+                context, MaterialPageRoute(builder: (context) => Login()));
             }
     return result;
   }
@@ -104,7 +105,7 @@ class LoginState extends State<LoginPage>{
 
   //Make Sign up  Request for the api call
   Future<String>  _makeSignUprequest(String name1,String email1,String password1) async{
-    String url = 'http://192.168.137.1:8080/user/signup';
+    String url = 'http://resume-builder1.herokuapp.com/user/signup';
         final response = await http.post(Uri.encodeFull(url),
             headers: {"Content-Type": 'application/json',},
             body: json.encode({"id": email1, "password": password1,"name":name1}));
