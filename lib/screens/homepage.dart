@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:resume_app/screens/project.dart';
 import 'package:resume_app/sizeconfig.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'educationdetails1.dart';
@@ -241,15 +242,25 @@ class _HomePageState extends State<HomePage> {
                                     ),
                                   ),
                                 ),
-                                Text(
-                                  "Projects",
-                                  style: TextStyle(
-                                      color: colorx,
-                                      fontFamily: 'Oswald',
-                                      fontSize: 19.0,
-                                      fontWeight: FontWeight.w500,
-                                      fontStyle: FontStyle.normal),
-                                )
+                                GestureDetector(
+                                    onTap: (){
+
+                                    Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                    builder: (context) =>
+                                    Projects(u_id)));
+                                    },
+                                    child:  Text(
+                                      "Projects",
+                                      style: TextStyle(
+                                          color: colorx,
+                                          fontFamily: 'Oswald',
+                                          fontSize: 19.0,
+                                          fontWeight: FontWeight.w500,
+                                          fontStyle: FontStyle.normal),
+                                    )),
+
                               ],
                             ),
                           ],

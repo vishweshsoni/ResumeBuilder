@@ -1,19 +1,6 @@
-//{
-//  "error": false,
-//  "message": "success",
-//  "data": {
-//        "id": 3,
-//        "degree": "BSc Ele",
-//        "university": "Gujarat University",
-//        "year": "2017",
-//        "cpi": "6.9"
-//    }
-//}
-
-
 class EdModel {
   var id;
-    var degree;
+  var degree;
   var university;
   var year;
   var cpi;
@@ -27,10 +14,10 @@ class EdModel {
   });
   factory EdModel.fromJson(Map<String, dynamic> json) {
     return EdModel(
-      id: json['id'],
-      degree: json['degree'],
-      university: json['university'],
-      year: json['year'],
+        id: json['id'],
+        degree: json['degree'],
+        university: json['university'],
+        year: json['year'],
         cpi:json['cpi']
 
     );

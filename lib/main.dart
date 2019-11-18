@@ -3,6 +3,7 @@ import 'package:resume_app/screens/educationdetails1.dart';
 import 'package:resume_app/screens/homepage.dart';
 import 'package:resume_app/screens/login.dart';
 import 'package:resume_app/screens/educationdetails.dart';
+import 'package:resume_app/screens/project.dart';
 import 'package:resume_app/screens/signup.dart';
 void main() => runApp(MyApp());
 
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
           '/HomePage': (context)=>HomePage(),
           '/SignupPage':(context)=>SignUp(),
            '/PersonalDetails':(context)=>EducationDetails1(191),
+          '/projects':(context)=>Projects(191),
 
       },
       home: isLogin?Login():SignUp(),

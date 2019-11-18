@@ -1,39 +1,30 @@
 import 'dart:convert';
-
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
-import 'package:resume_app/model/educationmodel.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:resume_app/model/projectmodel.dart';
 import 'addEduDetails.dart';
 
-class EducationDetails1 extends StatefulWidget {
+class Projects extends StatefulWidget {
   var uid;
-  EducationDetails1(this.uid);
+  Projects(this.uid);
   @override
-  _EducationDetails1State createState() => _EducationDetails1State(this.uid);
+  _ProjectsState createState() => _ProjectsState(this.uid);
 }
 
-class _EducationDetails1State extends State<EducationDetails1> {
+class _ProjectsState extends State<Projects> {
   var uid;
-  _EducationDetails1State(this.uid);
+  _ProjectsState(this.uid);
   bool loading = false;
 
 
 
 
-  @override
-  void initState() {
-    // TODO: implement initState
-
-    super.initState();
-
-  }
 
 
-
-  Future<List<EdModel>> _fetchUsers() async {
-    final String uri = 'http://resume-builder1.herokuapp.com/resume/getEducation/'+uid;
-
+  Future<List<ProjectModel>> _fetchUsers() async {
+    print(uid);
+    final String uri = 'http://resume-builder1.herokuapp.com/resume/getProjects/'+uid;
+    print(uri);
 //    Map<String,String> headers = {"Content-type": "application/json"};
 //    var response = await http.get(Uri.encodeFull(uri),headers: headers);
 //    String ans = response.body.toString(); var responseJson = jsonDecode(ans);
@@ -67,16 +58,17 @@ class _EducationDetails1State extends State<EducationDetails1> {
 
       final items = responseJson["data"].cast<Map<String, dynamic>>();
 
-      List<EdModel> listofDegree = items.map<EdModel>((json) {
-        return EdModel.fromJson(json);
+      List<ProjectModel> listofDegree = items.map<ProjectModel>((json) {
+        return ProjectModel.fromJson(json);
       }).toList();
       return listofDegree;
     }
 
 
   }
+
   Widget educationListviewWidget(){
-    return FutureBuilder<List<EdModel>>(
+    return FutureBuilder<List<ProjectModel>>(
       future: _fetchUsers(),
       builder: (context, snapshot) {
         if (!snapshot.hasData)
@@ -93,6 +85,7 @@ class _EducationDetails1State extends State<EducationDetails1> {
 //                  margin: EdgeInsets.all(20.0),
 //
 //                  decoration: BoxDecoration(
+
 //                    color: Colors.white70,
 //                    borderRadius: BorderRadius.circular(22.0),
 //                    border: Border.all(color: Colors.grey,style: BorderStyle.solid)
@@ -121,18 +114,17 @@ class _EducationDetails1State extends State<EducationDetails1> {
                         child: Container(
                           height: 25.0,
                           width:50.0,
-                          child: Center(child: Text(user.year),
+                          child: Center(child: Text(user.team_size),
                           ),
                         ),
 
                       ),
                       title:Column(
-
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text("Degree: "+user.degree),
-                          Text("CPI: "+user.cpi),
-                          Text("Year: "+user.year),
+                          Text("Degree: "+user.title),
+                          Text("CPI: "+user.mentor),
+                          Text("Year: "+user.description),
 
                         ],
                       ),
@@ -153,7 +145,7 @@ class _EducationDetails1State extends State<EducationDetails1> {
 //                                  });
 //                                });
 
-                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => EducationDetails1(uid)));
+                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => Projects(uid)));
 
                             },
                             child: Container(
@@ -216,7 +208,7 @@ class _EducationDetails1State extends State<EducationDetails1> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blueGrey,
-        title: Text('Education Details',style: TextStyle(color: Colors.white),),
+        title: Text('Project Details',style: TextStyle(color: Colors.white),),
         actions: <Widget>[
 
           IconButton(
