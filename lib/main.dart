@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       routes: {
           '/HomePage': (context)=>HomePage(),
           '/SignupPage':(context)=>SignUp(),
-           '/PersonalDetails':(context)=>EducationDetails1(),
+           '/PersonalDetails':(context)=>EducationDetails1(191),
 
       },
       home: isLogin?Login():SignUp(),

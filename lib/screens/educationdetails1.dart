@@ -3,21 +3,37 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:resume_app/model/educationmodel.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'addEduDetails.dart';
 
 class EducationDetails1 extends StatefulWidget {
+  var uid;
+  EducationDetails1(this.uid);
   @override
-  _EducationDetails1State createState() => _EducationDetails1State();
+  _EducationDetails1State createState() => _EducationDetails1State(this.uid);
 }
 
 class _EducationDetails1State extends State<EducationDetails1> {
+ var uid;
+ _EducationDetails1State(this.uid);
   bool loading = false;
 
 
 
 
-  final String uri = 'http://192.168.137.1:8080/resume/getEducation/1001';
+  @override
+  void initState() {
+    // TODO: implement initState
+
+    super.initState();
+
+  }
+
+
+
   Future<List<EdModel>> _fetchUsers() async {
+    final String uri = 'http://resume-builder1.herokuapp.com/resume/getEducation/'+uid;
+    print(uri);
 //    Map<String,String> headers = {"Content-type": "application/json"};
 //    var response = await http.get(Uri.encodeFull(uri),headers: headers);
 //    String ans = response.body.toString(); var responseJson = jsonDecode(ans);
@@ -137,7 +153,7 @@ class _EducationDetails1State extends State<EducationDetails1> {
 //                                  });
 //                                });
 
-                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => EducationDetails1()));
+                              Navigator.pushReplacement(context, MaterialPageRoute(builder: (BuildContext context) => EducationDetails1(uid)));
 
                             },
                             child: Container(
