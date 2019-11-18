@@ -72,6 +72,8 @@ class LoginState extends State<LoginPage>{
   {
 
     String url = 'http://resume-builder1.herokuapp.com/user/login';
+
+    //url changed
     Map<String,String> headers = {"Content-type": "application/json"};
 
     final response = await http.post(Uri.encodeFull(url),
