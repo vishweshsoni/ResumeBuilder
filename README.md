@@ -7,7 +7,8 @@ Resume Builder application for Android and ios that takes input from the user an
 - [Source Code ](https://github.com/mb1997/ResumeBuilderMobileApp)
 ## Presentation:
 - [PPT](https://drive.google.com/open?id=1aku0Bk5ldgsN5XqxzZKaBzyFlFRltL1H)
-
+## ScreenShots:
+- [ScreenShots]()
 ## Documents For the for the Project.
 
 - [Data Dictionary](https://drive.google.com/open?id=15ZCo641-zcrTus8Y74Ho1RQRyIvyxIXa)
@@ -25,6 +26,7 @@ Resume Builder application for Android and ios that takes input from the user an
 <a href="https://github.com/vidishashah25"><img src="https://avatars3.githubusercontent.com/u/30207323?s=400&v=4" height="50px" width="50px" alt=""/></a>
 <a href="https://github.com/mb1997"><img src="https://avatars3.githubusercontent.com/u/45919370?s=400&v=4" height="50px" width="50px" alt=""/></a>
 <a href="https://github.com/Vishvam17/"><img src="https://avatars2.githubusercontent.com/u/58030163?s=400&v=4" height="50px" width="50px" alt=""/></a>
+<a href="https://github.com/krutrupera74"><img src="https://avatars1.githubusercontent.com/u/32562612?s=400&v=4" height="50px" width="50px" alt=""/></a>
 
 
 For help getting started with Flutter, view[online documentation](https://flutter.dev/docs), which offers tutorials,
