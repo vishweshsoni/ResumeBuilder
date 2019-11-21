@@ -1,5 +1,8 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
 import 'package:resume_app/screens/project.dart';
 import 'package:resume_app/sizeconfig.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -10,7 +13,7 @@ import 'Awards.dart';
 import 'Experience.dart';
 import 'skills.dart';
 import 'interest.dart';
-
+import 'package:http/http.dart' as http;
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -378,7 +381,9 @@ class _HomePageState extends State<HomePage> {
                                       size: 20.0,
                                       color: Colors.amber,
                                     ),
-                                    onPressed: () {},
+                                    onPressed: () {
+
+                                    },
                                   ),
                                 ),
                                 Text(
@@ -394,46 +399,8 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ],
                         ),
-                        SizedBox(
-                          width: MediaQuery.of(context).size.width / 6,
-                        ),
-                        Column(
-                          children: <Widget>[
-                            Column(
-                              children: <Widget>[
-                                Container(
-                                  width: MediaQuery.of(context).size.width / 6,
-                                  height: MediaQuery.of(context).size.height / 12,
-                                  decoration: BoxDecoration(
-                                      shape: BoxShape.rectangle,
-                                      borderRadius: BorderRadius.circular(25.0),
-                                      color: colorx,
-                                      boxShadow: [
-                                        BoxShadow(color: Colors.black12),
-                                      ]),
-                                  child: IconButton(
-                                    splashColor: Colors.pinkAccent,
-                                    icon: Icon(
-                                      Icons.file_download,
-                                      size: 25.0,
-                                      color: Colors.amber,
-                                    ),
-                                    onPressed: () {},
-                                  ),
-                                ),
-                                Text(
-                                  "Download",
-                                  style: TextStyle(
-                                      color: colorx,
-                                      fontFamily: 'Oswald',
-                                      fontSize: 19.0,
-                                      fontWeight: FontWeight.w500,
-                                      fontStyle: FontStyle.normal),
-                                )
-                              ],
-                            ),
-                          ],
-                        ),
+
+
                       ],
                     ),
                   ),
@@ -445,4 +412,8 @@ class _HomePageState extends State<HomePage> {
           )),
     );
   }
+
+
+
+
 }

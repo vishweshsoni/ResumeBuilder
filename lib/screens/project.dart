@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:resume_app/model/projectmodel.dart';
 import 'addEduDetails.dart';
+import 'addProjectDetails.dart';
 
 class Projects extends StatefulWidget {
   var uid;
@@ -44,7 +45,7 @@ class _ProjectsState extends State<Projects> {
 
     final response = await http.get(Uri.encodeFull(uri),
         headers: headers);
-    print(response.body.toString() + "qwerty");
+
 
     String ans = response.body.toString();
 
@@ -79,6 +80,7 @@ class _ProjectsState extends State<Projects> {
               .map((user) => GestureDetector(
             onTap: () {
 
+
             },
 //              child: Container(
 //                  height: MediaQuery.of(context).size.height/7,
@@ -109,6 +111,13 @@ class _ProjectsState extends State<Projects> {
                   mainAxisSize: MainAxisSize.max,
 
                   children: <Widget>[
+                    Container(
+                      margin: EdgeInsets.only(left: 20.0),
+                      child: Align(
+
+                          alignment: Alignment.centerLeft,
+                          child: Text("Team Size",style: TextStyle(),)),
+                    ),
                     ListTile(
                       leading: Card(
                         child: Container(
@@ -116,15 +125,18 @@ class _ProjectsState extends State<Projects> {
                           width:50.0,
                           child: Center(child: Text(user.team_size),
                           ),
+                          margin: EdgeInsets.all(10.0),
                         ),
 
                       ),
                       title:Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
-                          Text("Degree: "+user.title),
-                          Text("CPI: "+user.mentor),
-                          Text("Year: "+user.description),
+                          Text("Project Name: "+user.title),
+                          Text("   "),
+                          Text("Mentor Name:  "+user.mentor),
+                          Text("   "),
+                          Text("Project Description:\n\n"+user.description),
 
                         ],
                       ),
@@ -216,7 +228,7 @@ class _ProjectsState extends State<Projects> {
             iconSize: 30.0,
             color: Colors.white,
             onPressed: (){
-              Navigator.push(context, MaterialPageRoute(builder: (context)=>AddEduDetails()));
+              Navigator.push(context, MaterialPageRoute(builder: (context)=>ProjectDetails(uid)));
             },
           ),
 

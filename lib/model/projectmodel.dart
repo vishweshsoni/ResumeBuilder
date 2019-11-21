@@ -29,7 +29,7 @@ class ProjectModel {
   });
   factory ProjectModel.fromJson(Map<String, dynamic> json) {
     return ProjectModel(
-        id: json['id'],
+         id: json['id'],
         description: json['description'],
         title: json['title'],
         duration: json['duration'],
