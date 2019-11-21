@@ -27,7 +27,7 @@ dependencies:
   dio: 2.1.0
   fluttertoast: ^3.0.3
   shared_preferences: ^0.4.2
-
+  printing: ^2.1.8
 
 
 
