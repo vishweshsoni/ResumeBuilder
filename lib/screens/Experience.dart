@@ -64,7 +64,7 @@ class _ExperienceState extends State<Experience> {
 
     final response = await http.post(Uri.encodeFull(url),
         headers: headers,
-        body: json.encode({"experience": experience}));
+        body: json.encode({"resume_id":uid,"exp": experience}));
     print(response.body.toString() + "qwerty");
 
     String ans = response.body.toString();
